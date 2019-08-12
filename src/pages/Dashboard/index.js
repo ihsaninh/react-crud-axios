@@ -12,7 +12,7 @@ class index extends Component {
       nama: "",
       email: "",
       jurusan: "",
-      gender: ""
+			gender: "",
     };
   }
 
@@ -126,13 +126,13 @@ class index extends Component {
   render() {
     return (
       <Fragment>
-        <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <nav className="navbar navbar-dark bg-primary navbar-expand-lg">
           <div className="container">
-            <a class="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               Navbar
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-toggle="collapse"
               data-target="#navbarNavAltMarkup"
@@ -140,14 +140,14 @@ class index extends Component {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon" />
+              <span className="navbar-toggler-icon" />
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">
-                  Home <span class="sr-only">(current)</span>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav">
+                <a className="nav-item nav-link" href="/">
+                  Home <span className="sr-only">(current)</span>
                 </a>
-                <a class="nav-item nav-link" href="#">
+                <a className="nav-item nav-link active" href="/">
                   Students
                 </a>
               </div>
@@ -155,20 +155,20 @@ class index extends Component {
           </div>
         </nav>
         <div className="container mt-4">
-          <div class="title mb-5">
+          <div className="title mb-5">
             <button
               type="button"
               data-toggle="modal"
               data-target="#addmodal"
-              class="btn btn-primary float-right"
+              className="btn btn-primary float-right"
             >
               Tambah Data
             </button>
             <h2>Daftar Siswa SMKN 2 Bogor</h2>
           </div>
-          <table class="table">
+          <table className="table">
             <thead>
-              <tr class="bg-primary text-white">
+              <tr className="bg-primary text-white">
                 <th scope="col">#</th>
                 <th scope="col">NIS</th>
                 <th scope="col">Nama</th>
@@ -179,26 +179,26 @@ class index extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.students.map((item, index) => (
-                <tr>
+              {this.state.students.map((student, index) => (
+                <tr key={index}>
                   <th scope="row">{index + 1}</th>
-                  <td>{item.nis}</td>
-                  <td>{item.nama}</td>
-                  <td>{item.gender}</td>
-                  <td>{item.email}</td>
-                  <td>{item.jurusan}</td>
+                  <td>{student.nis}</td>
+                  <td>{student.nama}</td>
+                  <td>{student.gender}</td>
+                  <td>{student.email}</td>
+                  <td>{student.jurusan}</td>
                   <td>
                     <button
-                      class="badge badge-primary"
+                      className="badge badge-primary"
                       data-toggle="modal"
                       data-target="#addmodal"
-                      onClick={() => this.getSiswaById(item.id)}
+                      onClick={() => this.getSiswaById(student.id)}
                     >
                       edit
                     </button>
                     <button
-                      class="badge badge-danger"
-                      onClick={() => this.handleDeleteSiswa(item.id)}
+                      className="badge badge-danger"
+                      onClick={() => this.handleDeleteSiswa(student.id)}
                     >
                       Hapus
                     </button>
@@ -208,38 +208,38 @@ class index extends Component {
             </tbody>
           </table>
         </div>
-				
+
         <div
-          class="modal fade"
+          className="modal fade"
           id="addmodal"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="addModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
                   {this.state.editable === true
                     ? "Edit Data Siswa"
                     : "Tambah Data Siswa"}
                 </h5>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="nis">NIS</label>
+              <div className="modal-body">
+                <div className="form-group">
+                  <label htmlFor="nis">NIS</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="nis"
                     aria-describedby="emailHelp"
                     placeholder="Enter NIS"
@@ -247,44 +247,44 @@ class index extends Component {
                     value={this.state.nis}
                   />
                 </div>
-                <div class="form-group">
-                  <label for="nama">Nama</label>
+                <div className="form-group">
+                  <label htmlFor="nama">Nama</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="nama"
                     placeholder="Enter name"
                     onChange={this.handleChange}
                     value={this.state.nama}
                   />
                 </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="email"
                     placeholder="Enter email"
                     onChange={this.handleChange}
                     value={this.state.email}
                   />
                 </div>
-                <div class="form-group">
-                  <label for="jurusan">Jurusan</label>
+                <div className="form-group">
+                  <label htmlFor="jurusan">Jurusan</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="jurusan"
                     placeholder="Enter jurusan"
                     onChange={this.handleChange}
                     value={this.state.jurusan}
                   />
                 </div>
-                <div class="form-group">
-                  <label for="gender">Gender</label>
+                <div className="form-group">
+                  <label htmlFor="gender">Gender</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="gender"
                     placeholder="Enter gender"
                     onChange={this.handleChange}
@@ -292,17 +292,17 @@ class index extends Component {
                   />
                 </div>
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   data-dismiss="modal"
                 >
                   Close
                 </button>
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   onClick={
                     this.state.editable === true
                       ? this.handleUpdateSiswa
