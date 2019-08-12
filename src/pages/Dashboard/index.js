@@ -12,7 +12,7 @@ class index extends Component {
       nama: "",
       email: "",
       jurusan: "",
-			gender: "",
+      gender: ""
     };
   }
 
